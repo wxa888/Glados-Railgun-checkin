@@ -263,7 +263,7 @@ class API:
         url = self._get_full_url(self.CHECKIN_URL)
         checkin_data = self._get_checkin_data()
         response = self._make_request(url, "POST", checkin_data, cookies)
-
+        
         result = {
             "status": "签到失败",
             "points": "0",
@@ -276,7 +276,7 @@ class API:
             code = data.get("code", -2)
             message = data.get("message", "无消息字段")
             points = str(data.get("points", 0))
-
+            logger.info(f"{points}")
             if code == CheckinStatus.SUCCESS.value:
                 self._log("info", LogEmoji.SUCCESS, f"{{ code : {code}, points : {points}, message : {message} }}")
                 result["code"] = CheckinStatus.SUCCESS
