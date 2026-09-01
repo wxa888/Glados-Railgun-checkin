@@ -9,7 +9,7 @@ on:
       - 'imgs/'
   schedule:
     - cron: '0 8 * * *'
-    timezone: Asia/Shanghai
+      timezone: Asia/Shanghai
   watch:
     types: started
 
