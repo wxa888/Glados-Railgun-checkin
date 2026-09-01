@@ -8,8 +8,7 @@ on:
       - 'README.md'
       - 'imgs/'
   schedule:
-    - cron: '0 10 * * *'
-      timezone: Asia/Shanghai
+    - cron: '0 6 * * *'
   watch:
     types: started
 
