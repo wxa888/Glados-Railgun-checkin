@@ -8,13 +8,14 @@ on:
       - 'README.md'
       - 'imgs/**'
   schedule:
-    - cron: '0 4 * * *'
-
+    - cron: '0 10 * * *'
+      timezone: Asia/Shanghai
 jobs:
   build:
     name: glados/railgun checkin
     runs-on: ubuntu-latest
-      
+    env:
+      TZ: Asia/Shanghai  # 脚本运行时内部时区为北京时间  
     permissions:
       contents: read
       actions: write
