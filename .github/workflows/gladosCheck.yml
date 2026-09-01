@@ -9,6 +9,7 @@ on:
       - 'imgs/'
   schedule:
     - cron: '0 8 * * *'
+    timezone: Asia/Shanghai
   watch:
     types: started
 
@@ -16,6 +17,8 @@ jobs:
   build:
     name: glados checkin
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai  # 脚本运行时内部时区为北京时间
     strategy:
       matrix:
         python-version: [3.8]
