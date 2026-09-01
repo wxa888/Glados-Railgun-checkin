@@ -14,8 +14,7 @@ jobs:
   build:
     name: glados/railgun checkin
     runs-on: ubuntu-latest
-    env:
-      TZ: Asia/Shanghai  # 脚本运行时内部时区为北京时间  
+     
     permissions:
       contents: read
       actions: write
@@ -27,7 +26,7 @@ jobs:
     # 这里加入全局环境变量，强制后续所有第三方 actions 兼容 Node.js 24 运行环境
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
+      TZ: Asia/Shanghai  # 脚本运行时内部时区为北京时间 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v6
