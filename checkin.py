@@ -102,6 +102,19 @@ def make_request(url: str, method: str, headers: Dict[str, str], data: Optional[
         if not response.ok:
             logger.warning(f"向 {url} 发起的请求失败，状态码 {response.status_code}。响应内容: {response.text}")
             return None
+
+
+        # ===== 新增：打印请求结果 =====
+        print(f"URL: {url}")
+        print(f"状态码: {response.status_code}")
+        try:
+            # 尝试格式化打印 JSON 响应
+            print(f"响应内容: {json.dumps(response.json(), ensure_ascii=False, indent=2)}")
+        except Exception:
+            # 非 JSON 则打印原始文本（限制长度防刷屏）
+            text = response.text[:500] + ('...' if len(response.text) > 500 else '')
+            print(f"响应内容: {text}")
+        # ============================
         return response
     except requests.exceptions.RequestException as e:
         logger.error(f"向 {url} 发起请求时发生网络错误: {e}")
